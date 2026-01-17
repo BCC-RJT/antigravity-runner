@@ -1,0 +1,178 @@
+:root {
+    --primary-color: #00f3ff;
+    --secondary-color: #ff0055;
+    --bg-color: #0a0a10;
+    --road-color: #1a1a20;
+    --text-color: #ffffff;
+    --font-main: 'Orbitron', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-color: var(--road-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 50px rgba(0, 243, 255, 0.1);
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Road Styling */
+#road {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
+    background-size: 100% 100px; /* Spacing for the 'lines' */
+    animation: moveRoad 0.5s linear infinite;
+}
+
+/* Animation control - will be adjusted by JS speed */
+@keyframes moveRoad {
+    from { background-position: 0 0; }
+    to { background-position: 0 100px; }
+}
+
+/* Cars */
+.car {
+    width: 50px;
+    height: 90px;
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.player-car {
+    background: linear-gradient(to top, #00c6ff, #0072ff);
+    bottom: 20px;
+    left: 175px; /* Centered: (400 - 50) / 2 */
+    box-shadow: 0 0 15px #00c6ff;
+    z-index: 10;
+    transition: transform 0.1s;
+}
+
+.obstacle {
+    background: linear-gradient(to top, #ff416c, #ff4b2b);
+    box-shadow: 0 0 10px #ff4b2b;
+    z-index: 5;
+}
+
+/* UI Layer */
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through to game when playing */
+}
+
+/* Score Board */
+#score-board {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+    z-index: 20;
+    pointer-events: auto;
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 16, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 30;
+    pointer-events: auto;
+    transition: opacity 0.3s;
+}
+
+.screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.screen h1 {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.screen p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.difficulty-select {
+    margin-bottom: 30px;
+}
+
+.difficulty-select label {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+select {
+    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    cursor: pointer;
+}
+
+select option {
+    background: var(--bg-color);
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-family: var(--font-main);
+    background: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    color: #fff;
+    box-shadow: 0 0 20px var(--secondary-color);
+}
