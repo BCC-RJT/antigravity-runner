@@ -12,6 +12,10 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
+    -webkit-user-select: none;
+    /* Safari touch select disable */
+    touch-action: none;
+    /* Disable default touch actions */
 }
 
 body {
@@ -29,6 +33,11 @@ body {
     position: relative;
     width: 400px;
     height: 600px;
+    /* Default desktop size */
+    max-width: 100vw;
+    /* Responsive for mobile */
+    max-height: 100vh;
+    /* Responsive for mobile */
     background-color: var(--road-color);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 50px rgba(0, 243, 255, 0.1);
     overflow: hidden;
@@ -42,14 +51,18 @@ body {
     height: 100%;
     position: relative;
     background-image: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
-    background-size: 100% 100px; /* Spacing for the 'lines' */
+    background-size: 100% 100px;
     animation: moveRoad 0.5s linear infinite;
 }
 
-/* Animation control - will be adjusted by JS speed */
 @keyframes moveRoad {
-    from { background-position: 0 0; }
-    to { background-position: 0 100px; }
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 100px;
+    }
 }
 
 /* Cars */
@@ -58,13 +71,13 @@ body {
     height: 90px;
     position: absolute;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .player-car {
     background: linear-gradient(to top, #00c6ff, #0072ff);
     bottom: 20px;
-    left: 175px; /* Centered: (400 - 50) / 2 */
+    left: 175px;
     box-shadow: 0 0 15px #00c6ff;
     z-index: 10;
     transition: transform 0.1s;
@@ -83,10 +96,32 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Let clicks pass through to game when playing */
+    pointer-events: none;
 }
 
-/* Score Board */
+/* Touch Controls */
+#touch-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 25;
+}
+
+.touch-zone {
+    flex: 1;
+    height: 100%;
+    pointer-events: auto;
+    /* Capture clicks/touches */
+}
+
+/* Visual feedback for touch zones (optional debug, currently invisible but active) */
+.touch-zone:active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
 #score-board {
     position: absolute;
     top: 10px;
@@ -98,7 +133,6 @@ body {
     pointer-events: auto;
 }
 
-/* Screens */
 .screen {
     position: absolute;
     top: 0;
@@ -175,4 +209,8 @@ select option {
     background: var(--secondary-color);
     color: #fff;
     box-shadow: 0 0 20px var(--secondary-color);
+}
+
+.hidden {
+    display: none !important;
 }

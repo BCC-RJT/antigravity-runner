@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,22 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div id="game-container">
         <div id="road">
             <!-- Dynamic elements will be added here -->
-             <div id="player" class="car player-car"></div>
+            <div id="player" class="car player-car"></div>
         </div>
 
         <div id="ui-layer">
+            <div id="touch-controls" class="hidden">
+                <div id="touch-left" class="touch-zone"></div>
+                <div id="touch-right" class="touch-zone"></div>
+            </div>
+
             <div id="score-board">Score: <span id="score-value">0</span></div>
-            
+
             <div id="start-screen" class="screen active">
                 <h1>NEON RUNNER</h1>
                 <p>Use Arrow Keys or A/D to move</p>
@@ -29,6 +36,8 @@
                     </select>
                 </div>
                 <button id="start-btn" class="btn">START ENGINE</button>
+                <button id="tilt-btn" class="btn hidden" style="margin-top: 10px; font-size: 14px;">ENABLE TILT
+                    CONTROLS</button>
             </div>
 
             <div id="game-over-screen" class="screen hidden">
@@ -40,4 +49,5 @@
     </div>
     <script src="game.js"></script>
 </body>
+
 </html>
