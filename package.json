@@ -1,0 +1,13 @@
+{
+  "name": "antigravity-runner",
+  "version": "1.0.0",
+  "main": "game.js",
+  "scripts": {
+    "version:sync": "node scripts/update-version.js",
+    "dev": "npm run version:sync && echo Running dev server..."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
