@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Runner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="road">
+            <!-- Dynamic elements will be added here -->
+            <div id="player" class="car player-car"></div>
+        </div>
+
+        <div id="ui-layer">
+            <div id="touch-controls" class="hidden">
+                <div id="touch-left" class="touch-zone"></div>
+                <div id="touch-right" class="touch-zone"></div>
+            </div>
+
+            <div id="score-board">Score: <span id="score-value">0</span></div>
+
+            <div id="start-screen" class="screen active">
+                <h1>NEON RUNNER</h1>
+                <p>Use Arrow Keys or A/D to move</p>
+                <div class="difficulty-select">
+                    <label>Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <button id="start-btn" class="btn">START ENGINE</button>
+                <button id="tilt-btn" class="btn hidden" style="margin-top: 10px; font-size: 14px;">ENABLE TILT
+                    CONTROLS</button>
+            </div>
+
+            <div id="game-over-screen" class="screen hidden">
+                <h1>CRASHED!</h1>
+                <p>Final Score: <span id="final-score">0</span></p>
+                <button id="restart-btn" class="btn">RETRY</button>
+            </div>
+        </div>
+    </div>
+    <script src="Version.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
